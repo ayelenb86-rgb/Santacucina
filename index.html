@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santa Cucina — comida casera para llevar</title>
+<meta name="description" content="Tartas caseras y prepizzas al estilo argentino. Envasado al vacío. Pedí online y retirá en el local.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF3E7; --panel:#FFFDF8; --ink:#2B2420; --muted:#7A6E60;
+  --green:#3C6E47; --green-d:#2F5638; --amber:#E4A11B; --brick:#C0492F;
+  --line:#E9DCC7; --shadow:0 8px 28px rgba(60,45,30,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.5}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.08}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* Header */
+header{position:sticky;top:0;z-index:40;background:rgba(250,243,231,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px}
+.mark{width:40px;height:40px;border-radius:12px;background:var(--green);color:#FBEFD6;
+  display:grid;place-items:center;font-family:Fraunces;font-weight:700;font-size:16px;letter-spacing:1px;
+  box-shadow:var(--shadow);transform:rotate(-4deg)}
+.brand b{font-family:Fraunces;font-weight:700;font-size:20px;letter-spacing:.2px}
+.brand span{display:block;font-size:11px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-top:1px}
+.cartbtn{display:flex;align-items:center;gap:9px;background:var(--green);color:#FBEFD6;
+  padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;box-shadow:var(--shadow);
+  transition:transform .12s}
+.cartbtn:active{transform:scale(.96)}
+.cartbtn .n{background:var(--amber);color:#3a2b06;min-width:20px;height:20px;border-radius:999px;
+  font-size:12px;display:grid;place-items:center;font-weight:700;padding:0 5px}
+
+/* Hero */
+.hero{max-width:1080px;margin:0 auto;padding:44px 20px 22px}
+.eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);font-weight:600}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:600;margin:12px 0 0;max-width:14ch}
+.hero p{margin:16px 0 0;max-width:52ch;color:var(--muted);font-size:17px}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.tag{font-size:13px;background:var(--panel);border:1px solid var(--line);padding:7px 13px;
+  border-radius:999px;color:var(--ink);font-weight:500}
+.tag b{color:var(--green)}
+
+/* Sections */
+main{max-width:1080px;margin:0 auto;padding:14px 20px 120px}
+.sec{margin-top:40px}
+.sechead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);
+  padding-bottom:10px;margin-bottom:22px}
+.sechead h2{font-size:26px;font-weight:600}
+.sechead .c{font-size:13px;color:var(--muted);margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:22px}
+
+/* Card */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:var(--shadow);display:flex;flex-direction:column}
+.ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:#eee}
+.ph img{width:100%;height:100%;object-fit:cover}
+.sticker{position:absolute;top:12px;right:12px;background:var(--brick);color:#fff;
+  font-weight:700;font-size:12.5px;padding:7px 11px;border-radius:10px;transform:rotate(5deg);
+  box-shadow:0 4px 12px rgba(0,0,0,.2);line-height:1.15;text-align:center}
+.body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.body h3{font-size:19px;font-weight:600}
+.body .desc{font-size:13.5px;color:var(--muted);margin:6px 0 0;flex:1}
+.sizes{display:flex;gap:8px;margin:14px 0 0}
+.sz{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:8px 6px;
+  text-align:center;transition:.12s}
+.sz small{display:block;font-size:11px;color:var(--muted)}
+.sz b{font-size:14px}
+.sz.on{border-color:var(--green);background:#F1F6EE}
+.sz.on small{color:var(--green-d)}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:10px}
+.price{font-family:Fraunces;font-weight:600;font-size:22px}
+.price small{font-family:Inter;font-size:12px;color:var(--muted);font-weight:500;display:block;margin-top:-2px}
+.add{background:var(--green);color:#FBEFD6;padding:10px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;transition:.12s}
+.add:active{transform:scale(.95)}
+.qty{display:flex;align-items:center;gap:0;border:1.5px solid var(--green);border-radius:11px;overflow:hidden}
+.qty button{width:36px;height:38px;color:var(--green);font-size:20px;font-weight:600;background:#F1F6EE}
+.qty span{min-width:30px;text-align:center;font-weight:700}
+
+.note{font-size:12px;color:var(--brick);margin-top:9px;font-weight:500}
+
+/* Cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(43,36,32,.4);opacity:0;pointer-events:none;
+  transition:.2s;z-index:50}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(410px,100%);background:var(--bg);
+  z-index:60;transform:translateX(100%);transition:transform .26s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+.drawer.on{transform:translateX(0)}
+.dhead{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid var(--line)}
+.dhead h2{font-size:22px;font-weight:600}
+.x{font-size:26px;color:var(--muted);width:36px;height:36px}
+.items{flex:1;overflow:auto;padding:8px 20px}
+.li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.li img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.li .t{flex:1}
+.li .t b{font-size:14.5px}
+.li .t small{display:block;color:var(--muted);font-size:12px}
+.li .qty{border-color:var(--line);transform:scale(.85);transform-origin:left}
+.li .qty button{background:#EFE4D2;color:var(--ink)}
+.empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:15px}
+.foot{padding:18px 20px 22px;border-top:1px solid var(--line);background:var(--panel)}
+.trow{display:flex;justify-content:space-between;font-size:14px;margin-bottom:7px;color:var(--muted)}
+.trow.save{color:var(--brick);font-weight:600}
+.ttot{display:flex;justify-content:space-between;font-family:Fraunces;font-weight:700;font-size:24px;
+  margin:10px 0 4px}
+.send{width:100%;background:var(--green);color:#FBEFD6;padding:15px;border-radius:13px;font-weight:700;
+  font-size:16px;margin-top:12px;box-shadow:var(--shadow)}
+.send:active{transform:scale(.98)}
+.pick{font-size:12px;text-align:center;color:var(--muted);margin-top:12px}
+
+footer{border-top:1px solid var(--line);padding:26px 20px 40px;text-align:center;color:var(--muted);font-size:13px}
+footer b{color:var(--green)}
+@media(max-width:520px){.hero{padding-top:32px}.grid{gap:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand">
+      <div class="mark">SC</div>
+      <div><b>Santa Cucina</b><span>Cocina casera</span></div>
+    </div>
+    <button class="cartbtn" onclick="openCart()">
+      Mi pedido <span class="n" id="cartN">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Hecho en casa · para llevar</div>
+  <h1>Tartas caseras, listas cuando vos quieras</h1>
+  <p>Tartas y prepizzas caseras al estilo argentino. Elegí tus sabores, pagás y retirás en el local. Todo envasado al vacío para que se conserve mejor.</p>
+  <div class="tags">
+    <span class="tag"><b>Retiro</b> en el local</span>
+    <span class="tag"><b>Envasado</b> al vacío</span>
+    <span class="tag">Individual <b>14&nbsp;cm</b> · Grande <b>24&nbsp;cm</b></span>
+  </div>
+</section>
+
+<main>
+  <div class="sec">
+    <div class="sechead"><h2>Tartas caseras</h2><span class="c" id="cTartas"></span></div>
+    <div class="grid" id="tartas"></div>
+  </div>
+  <div class="sec">
+    <div class="sechead"><h2>Prepizzas</h2><span class="c">Base casera con salsa</span></div>
+    <div class="grid" id="prepizzas"></div>
+  </div>
+</main>
+
+<footer>
+  <b>Santa Cucina</b> · Pedidos para retirar en el local · Envasado al vacío para conservar mejor.
+</footer>
+
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="dhead"><h2>Mi pedido</h2><button class="x" onclick="closeCart()">&times;</button></div>
+  <div class="items" id="items"></div>
+  <div class="foot" id="foot"></div>
+</aside>
+
+<script>
+const PH = {"puerro": "img/puerro-pollo-cebolla.jpg", "espinaca": "img/calabaza-espinaca-cebolla.jpg", "calabaza": "img/calabaza-cebolla.jpg", "verduras": "img/verduras.jpg", "prepizza": "img/prepizza.jpg"};
+const WHATSAPP = "5491141791706"; // <-- reemplazar por el número real (con código de país, sin + ni espacios)
+
+const MINI=7000, MINI3=19500, GRANDE=16000, PREP=3000, PREP4=11200;
+
+const tartas=[
+ {key:'puerro',   name:'Puerro, pollo y cebolla', desc:'Con queso y un toque de crema.', img:PH.puerro},
+ {key:'espinaca', name:'Calabaza, espinaca y cebolla', desc:'Con queso y un toque de crema.', img:PH.espinaca},
+ {key:'calabaza', name:'Calabaza y cebolla', desc:'Suave, con el dulzor de la calabaza.', img:PH.calabaza},
+ {key:'verduras', name:'Verduras', desc:'Zapallito, cebolla, morrón, huevo, queso y un toque de crema.', img:PH.verduras},
+];
+const prepizza={key:'prepizza', name:'Prepizza', desc:'Base casera con salsa, lista para tu cobertura.', img:PH.prepizza};
+
+let cart={}; // id -> {name,size,label,unit,qty,img}
+const money=n=>'$'+n.toLocaleString('es-AR');
+const sizeState={}; // tarta key -> 'mini'|'grande'
+tartas.forEach(t=>sizeState[t.key]='mini');
+
+function renderMenu(){
+  document.getElementById('cTartas').textContent=tartas.length+' sabores · 2 tamaños';
+  document.getElementById('tartas').innerHTML=tartas.map(t=>{
+    const s=sizeState[t.key], price=s==='mini'?MINI:GRANDE;
+    const id=t.key+'|'+s, inCart=cart[id];
+    return `<div class="card">
+      <div class="ph"><img src="${t.img}" alt="${t.name}">
+        ${s==='mini'?'<div class="sticker">3&nbsp;x<br>'+money(MINI3)+'</div>':''}
+      </div>
+      <div class="body">
+        <h3>${t.name}</h3>
+        <p class="desc">${t.desc}</p>
+        <div class="sizes">
+          <div class="sz ${s==='mini'?'on':''}" onclick="setSize('${t.key}','mini')"><b>Individual</b><small>14 cm · ~350 g</small></div>
+          <div class="sz ${s==='grande'?'on':''}" onclick="setSize('${t.key}','grande')"><b>Grande</b><small>24 cm</small></div>
+        </div>
+        <div class="row">
+          <div class="price">${money(price)}<small>${s==='mini'?'c/u · 3 x '+money(MINI3):'c/u'}</small></div>
+          ${inCart?qtyCtl(id):`<button class="add" onclick="add('${t.key}','${s}')">Agregar</button>`}
+        </div>
+      </div></div>`;
+  }).join('');
+
+  const id='prepizza|u', inCart=cart[id];
+  document.getElementById('prepizzas').innerHTML=`<div class="card">
+    <div class="ph"><img src="${prepizza.img}" alt="Prepizza"><div class="sticker">4&nbsp;x<br>${money(PREP4)}</div></div>
+    <div class="body"><h3>Prepizzas</h3><p class="desc">${prepizza.desc}</p>
+      <div class="row"><div class="price">${money(PREP)}<small>c/u · 4 x ${money(PREP4)}</small></div>
+      ${inCart?qtyCtl(id):`<button class="add" onclick="add('prepizza','u')">Agregar</button>`}</div>
+    </div></div>`;
+}
+function qtyCtl(id){return `<div class="qty"><button onclick="dec('${id}')">−</button><span>${cart[id].qty}</span><button onclick="inc('${id}')">+</button></div>`;}
+
+function setSize(k,s){sizeState[k]=s;renderMenu();}
+function add(k,s){
+  let name,label,unit,img;
+  if(k==='prepizza'){name='Prepizza';label='c/u';unit=PREP;img=prepizza.img;s='u';}
+  else{const t=tartas.find(x=>x.key===k);name=t.name;img=t.img;
+       label=s==='mini'?'Individual · 14 cm':'Grande · 24 cm';unit=s==='mini'?MINI:GRANDE;}
+  const id=k+'|'+s;
+  cart[id]={key:k,name,size:s,label,unit,img,qty:1};
+  renderAll();
+}
+function inc(id){cart[id].qty++;renderAll();}
+function dec(id){cart[id].qty--;if(cart[id].qty<=0)delete cart[id];renderAll();}
+
+function totals(){
+  let miniQ=0,prepQ=0,grandeSum=0,base=0;
+  for(const id in cart){const c=cart[id];base+=c.unit*c.qty;
+    if(c.key==='prepizza')prepQ+=c.qty;
+    else if(c.size==='mini')miniQ+=c.qty;
+    else grandeSum+=c.unit*c.qty;}
+  const miniT=Math.floor(miniQ/3)*MINI3+(miniQ%3)*MINI;
+  const prepT=Math.floor(prepQ/4)*PREP4+(prepQ%4)*PREP;
+  const total=miniT+prepT+grandeSum;
+  return {base,total,save:base-total};
+}
+function renderCart(){
+  const ids=Object.keys(cart);
+  const box=document.getElementById('items');
+  if(!ids.length){box.innerHTML='<div class="empty">Todavía no agregaste nada.<br>Elegí tus tartas y prepizzas 🥧</div>';
+    document.getElementById('foot').innerHTML='';return;}
+  box.innerHTML=ids.map(id=>{const c=cart[id];
+    return `<div class="li"><img src="${c.img}"><div class="t"><b>${c.name}</b><small>${c.label} · ${money(c.unit)}</small></div>
+      <div class="qty"><button onclick="dec('${id}')">−</button><span>${c.qty}</span><button onclick="inc('${id}')">+</button></div></div>`;}).join('');
+  const t=totals();
+  document.getElementById('foot').innerHTML=
+    `<div class="trow"><span>Subtotal</span><span>${money(t.base)}</span></div>
+     ${t.save>0?`<div class="trow save"><span>Descuento combos</span><span>− ${money(t.save)}</span></div>`:''}
+     <div class="ttot"><span>Total</span><span>${money(t.total)}</span></div>
+     <button class="send" onclick="sendOrder()">Enviar pedido por WhatsApp</button>
+     <div class="pick">Retirás en el local · Envasado al vacío</div>`;
+}
+function renderAll(){
+  const n=Object.values(cart).reduce((a,c)=>a+c.qty,0);
+  document.getElementById('cartN').textContent=n;
+  renderMenu();renderCart();
+}
+function openCart(){document.getElementById('drawer').classList.add('on');document.getElementById('scrim').classList.add('on');}
+function closeCart(){document.getElementById('drawer').classList.remove('on');document.getElementById('scrim').classList.remove('on');}
+function sendOrder(){
+  const ids=Object.keys(cart);if(!ids.length)return;
+  const t=totals();
+  let msg='¡Hola! Quiero hacer un pedido en Santa Cucina:%0A%0A';
+  ids.forEach(id=>{const c=cart[id];msg+=`• ${c.qty} x ${c.name} (${c.label})%0A`;});
+  if(t.save>0)msg+=`%0ADescuento combos: − ${money(t.save)}`;
+  msg+=`%0ATotal: ${money(t.total)}%0A%0A(Retiro en el local)`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,'_blank');
+}
+renderAll();
+</script>
+</body>
+</html>
